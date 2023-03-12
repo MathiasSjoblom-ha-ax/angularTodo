@@ -38,6 +38,11 @@ export class TodoComponent implements OnInit{
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
+  removeCompleted(index: number) {
+    this.completedTodos.splice(index, 1);
+    localStorage.setItem('completedtodos', JSON.stringify(this.completedTodos));
+  }
+
   //OnInit function that is called at component initialization
   //Checks for localstorage data
   ngOnInit() {

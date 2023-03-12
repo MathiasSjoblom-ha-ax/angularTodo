@@ -6,17 +6,25 @@
         <input type="submit" value="Add Todo">
       </form>
     </div>
-    <div class="completed">
-      <span class="completedTodosText">Number of completed todos: {{completedTodos.length}}</span>
-    </div>
     <div class="listDiv">
-      <ul>
-        <li *ngFor="let todo of todos; let index = index">
-          {{ todo.contentText }}
-          <button (click)="doneTodo(index)">Done</button>
-          <button (click)="removeTodo(index)">Remove</button>
-        </li>
-      </ul>
+      <div class="todosList">
+        <ul>
+          <li *ngFor="let todo of todos; let index = index">
+            {{ todo.contentText }}
+            <button (click)="doneTodo(index)">Done</button>
+            <button (click)="removeTodo(index)">Remove</button>
+          </li>
+        </ul>
+      </div>
+      <div class="completedTodosList">
+        <span class="completedTodosText">Number of completed todos: {{completedTodos.length}}</span>
+        <ul>
+          <li *ngFor="let todo of completedTodos; let index = index">
+            {{ todo.contentText }}
+            <button (click)="removeCompleted(index)">Remove</button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
