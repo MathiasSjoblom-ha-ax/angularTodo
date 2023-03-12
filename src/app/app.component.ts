@@ -11,6 +11,7 @@ export class TodoComponent implements OnInit{
   //String to store the text for the todo item
   todoText = "";
   todos: Todo[] = [];
+  completedTodos: Todo[] = [];
   newTodo: Todo = new Todo(this.todoText, false);
   
 
@@ -24,6 +25,16 @@ export class TodoComponent implements OnInit{
   //Function that removes a todo item to the todos array and updates the local storage
   removeTodo(index: number) {
     this.todos.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  //Marks the todo item at the specified index as completed
+  //Moves it from the todos array to the completedTodos array and updates local storage
+  doneTodo(index: number) {
+    this.todos[index].isDone = true;
+    this.completedTodos.push(this.todos[index]);
+    this.todos.splice(index, 1);
+    localStorage.setItem('completedtodos', JSON.stringify(this.completedTodos));
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
