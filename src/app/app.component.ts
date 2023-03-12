@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from './classes/Todo';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit{
   //Array to store the todos items
-  todos: string[] = [];
   //String to store the text for the todo item
   todoText = "";
+  todos: Todo[] = [];
+  newTodo: Todo = new Todo(this.todoText, false);
+  
 
-  //Function that adds a todo item to the todos array and the local storage
+  //Function that adds a new todo item to the todos array and the local storage
   addTodo() {
-    this.todos.push(this.todoText);
+    const newTodo = new Todo(this.todoText, false);
+    this.todos.push(newTodo);
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 

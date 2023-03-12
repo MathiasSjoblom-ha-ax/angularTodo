@@ -2,14 +2,14 @@
   <div class="todoListContainer">
     <div class="formDiv">
       <form (ngSubmit)="addTodo()">
-        <input name="todoText" [(ngModel)]="todoText">
+        <input name="todoText" [(ngModel)]="todoText" placeholder="Enter Todo">
         <input type="submit" value="Add Todo">
       </form>
     </div>
     <div class="listDiv">
       <ul>
         <li *ngFor="let todo of todos; let index = index">
-          {{ todo }}
+          {{ todo.contentText }}
           <button (click)="removeTodo(index)">Remove</button>
         </li>
       </ul>
