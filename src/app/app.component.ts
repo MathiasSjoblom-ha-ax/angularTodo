@@ -17,9 +17,13 @@ export class TodoComponent implements OnInit{
 
   //Function that adds a new todo item to the todos array and the local storage
   addTodo() {
-    const newTodo = new Todo(this.todoText, false);
-    this.todos.push(newTodo);
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+    if(this.todoText.length != 0) {
+      const newTodo = new Todo(this.todoText, false);
+      this.todos.push(newTodo);
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    } else {
+      alert("Please enter a valid todo!");
+    }
   }
 
   //Function that removes a todo item to the todos array and updates the local storage
@@ -48,5 +52,8 @@ export class TodoComponent implements OnInit{
   ngOnInit() {
     const existingTodos = localStorage.getItem('todos');
     this.todos = JSON.parse(existingTodos as string) || [];
+
+    const existingCompletedTodos = localStorage.getItem('completedtodos');
+    this.todos = JSON.parse(existingCompletedTodos as string) || [];
   }
 }

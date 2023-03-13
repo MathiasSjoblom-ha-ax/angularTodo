@@ -1,30 +1,53 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="container">
-  <div class="todoListContainer">
-    <div class="formDiv">
-      <form (ngSubmit)="addTodo()">
-        <input name="todoText" [(ngModel)]="todoText" placeholder="Enter Todo">
-        <input type="submit" value="Add Todo">
-      </form>
+  <div class="navigationBar">
+    <div class="leftPart">
+      <span class="bankText">Open Banking Market</span>
+      <div class="leftNavItems">
+        <span class="leftItem">Get started</span>
+        <span class="leftItem">Contact</span>
+        <span class="leftItem">Blog</span>
+      </div>
     </div>
-    <div class="listDiv">
-      <div class="todosList">
-        <ul>
-          <li *ngFor="let todo of todos; let index = index">
-            {{ todo.contentText }}
-            <button (click)="doneTodo(index)">Done</button>
-            <button (click)="removeTodo(index)">Remove</button>
-          </li>
-        </ul>
+    <div class="middlePart">
+      <!--Empty for future changes-->
+    </div>
+    <div class="rightPart">
+      <div class="rightNavItems">
+        <div class="loginIcon"><i class="material-icons">lock_open</i></div>
+        <span class="rightItem">Login</span>
+        <span class="rightItem">Sign Up</span>
       </div>
-      <div class="completedTodosList">
-        <span class="completedTodosText">Number of completed todos: {{completedTodos.length}}</span>
-        <ul>
-          <li *ngFor="let todo of completedTodos; let index = index">
-            {{ todo.contentText }}
-            <button (click)="removeCompleted(index)">Remove</button>
-          </li>
-        </ul>
-      </div>
+    </div>
+  </div>
+  <div class="listsContainer">
+    <div class="todoListContainer">
+        <div class="formDiv">
+          <form (ngSubmit)="addTodo()">
+            <input name="todoText" [(ngModel)]="todoText" placeholder="Enter Todo" maxlength="25">
+            <input type="submit" value="Add Todo">
+          </form>
+        </div>
+        <div class="listDiv">
+          <div class="todosList">
+            <ul>
+              <li *ngFor="let todo of todos; let index = index">
+                {{ todo.contentText }}
+                <i class="material-icons" (click)="doneTodo(index)">check_circle</i>
+                <i class="material-icons" (click)="removeTodo(index)">delete</i>
+              </li>
+            </ul>
+          </div>
+          <div class="completedTodosList">
+            <span class="completedTodosText">Number of completed todos: {{completedTodos.length}}</span>
+            <ul>
+              <li *ngFor="let todo of completedTodos; let index = index">
+                {{ todo.contentText }}
+                <i class="material-icons" (click)="removeCompleted(index)">delete</i>
+              </li>
+            </ul>
+          </div>
+        </div>
     </div>
   </div>
 </div>
