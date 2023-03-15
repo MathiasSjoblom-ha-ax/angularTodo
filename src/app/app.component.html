@@ -30,20 +30,20 @@
           </form>
         </div>
         <div class="listDiv">
-          <div class="todosList">
-            <span class="completedTodosText">Number of todos: {{todos.length}}</span>
+          <div class="todosList" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'todosList')">
+            <span class="completedTodosText">Todos: {{todos.length}}</span>
             <ul>
-              <li *ngFor="let todo of todos; let index = index">
+              <li *ngFor="let todo of todos; let index = index" draggable="true" (dragstart)="onDragStart($event, index, 'todosList')" >
                 {{ todo.contentText }}
                 <i class="material-icons" (click)="doneTodo(index)">check_circle</i>
                 <i class="material-icons" (click)="removeTodo(index)">delete</i>
               </li>
             </ul>
           </div>
-          <div class="completedTodosList">
-            <span class="completedTodosText">Number of completed todos: {{completedTodos.length}}</span>
+          <div class="completedTodosList" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'completedTodosList')">
+            <span class="completedTodosText">Completed todos: {{completedTodos.length}}</span>
             <ul>
-              <li class="compListItems" *ngFor="let todo of completedTodos; let index = index">
+              <li *ngFor="let todo of completedTodos; let index = index" draggable="true" (dragstart)="onDragStart($event, index, 'completedTodosList')">
                 {{ todo.contentText }}
                 <i class="material-icons" (click)="removeCompleted(index)">delete</i>
               </li>

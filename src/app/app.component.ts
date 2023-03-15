@@ -57,4 +57,34 @@ export class TodoComponent implements OnInit{
     const existingCompletedTodos = localStorage.getItem('completedtodos');
     this.todos = JSON.parse(existingCompletedTodos as string) || [];
   }
+
+  //Function called when drag starts, sets the dragged data to the index of the item
+  onDragStart(event: DragEvent, index: number, sourceList: string): void {
+    event.dataTransfer!.setData("text/plain", index.toString());
+    event.dataTransfer!.setData("sourceList", sourceList);
+  }
+  
+  //Function called when dragged item is over a drop target
+  onDragOver(event: DragEvent): void {
+    event.preventDefault();
+    event.dataTransfer!.dropEffect = "move";
+  }
+
+  //Function called when dragged item is dropped on target, changes item from list to the drop target list
+  onDrop(event: DragEvent, listName: string): void {
+    event.preventDefault();
+    const index = parseInt(event.dataTransfer!.getData("text/plain"), 10);
+    const sourceList = event.dataTransfer!.getData("sourceList");
+    const item = sourceList === 'todosList' ? this.todos[index] : this.completedTodos[index];
+    if (sourceList === 'todosList') {
+      this.todos.splice(index, 1);
+    } else {
+      this.completedTodos.splice(index, 1);
+    }
+    if (listName === 'todosList') {
+      this.todos.unshift(item);
+    } else {
+      this.completedTodos.unshift(item);
+    }
+  }
 }

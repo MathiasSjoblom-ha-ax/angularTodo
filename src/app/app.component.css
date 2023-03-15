@@ -1,6 +1,7 @@
 .container {
   background-image: url(../public/crosskeyBackground.png);
   background-size: cover;
+  background-attachment: fixed;
 }
 
 /* Navigation bar */
@@ -136,11 +137,43 @@
 }
 
 /* Shared css */
-  
+/*
 .todosList,
 .completedTodosList {
   margin-top: 20px;
   border-bottom: 1px solid #ffff;
+} */
+
+button {
+  margin-left: 5px;
+}
+
+.todosList,
+.completedTodosList {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.todosList ul,
+.completedTodosList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todosList li,
+.completedTodosList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-right: 30px;
+}
+
+.todosList li i,
+.completedTodosList li i {
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 .todoListContainer, 
@@ -148,6 +181,14 @@
 .todosList {
   border: 1px solid #ffff;
   padding: 10px;
+}
+
+.listDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
 }
 
 /* Completed todo list container */
@@ -160,10 +201,6 @@
   border-bottom: 2px solid #ffff;
   padding-bottom: 2px;
   margin-bottom: 20px;
-}
-  
-button {
-  margin-left: 5px;
 }
 
 .completedTodosList {
