@@ -22,14 +22,16 @@
   </div>
   <div class="listsContainer">
     <div class="todoListContainer">
+      <a class="todoListTopText">Todo List</a>
         <div class="formDiv">
           <form (ngSubmit)="addTodo()">
-            <input name="todoText" [(ngModel)]="todoText" placeholder="Enter Todo" maxlength="25">
-            <input type="submit" value="Add Todo">
+            <input class="todoInput" name="todoText" [(ngModel)]="todoText" placeholder="Enter Todo" maxlength="25">
+            <input type="submit" value="Add Todo" class="addButton">
           </form>
         </div>
         <div class="listDiv">
           <div class="todosList">
+            <span class="completedTodosText">Number of todos: {{todos.length}}</span>
             <ul>
               <li *ngFor="let todo of todos; let index = index">
                 {{ todo.contentText }}
@@ -41,7 +43,7 @@
           <div class="completedTodosList">
             <span class="completedTodosText">Number of completed todos: {{completedTodos.length}}</span>
             <ul>
-              <li *ngFor="let todo of completedTodos; let index = index">
+              <li class="compListItems" *ngFor="let todo of completedTodos; let index = index">
                 {{ todo.contentText }}
                 <i class="material-icons" (click)="removeCompleted(index)">delete</i>
               </li>

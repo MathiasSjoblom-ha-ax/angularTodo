@@ -1,3 +1,8 @@
+.container {
+  background-image: url(../public/crosskeyBackground.png);
+  background-size: cover;
+}
+
 /* Navigation bar */
 
 .navigationBar {
@@ -51,18 +56,72 @@
   margin-right: 20px;
 }
 
-.listsContainer {
-  margin: 0 auto;
-  max-width: 800px;
-}
-
 .material-icons {
   cursor: pointer;
 }
 
+/* Top part */
+
+.todoListTopText {
+  font-weight: 700;
+  font-size: 30px;
+  padding: 10px;
+  color: #ffff;
+  border-bottom: 2px solid rgb(32, 168, 216) !important;
+  display: inline-block;
+  padding-bottom: 2px;
+  margin-bottom: 20px;
+}
+
+.todoInput {
+  font-family: Arial;
+  flex-grow: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-right: 16px;
+  box-sizing: border-box;
+}
+
+.addButton {
+  background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+  background-color:#33bdef;
+  border-radius:6px;
+  border:1px solid #057fd0;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  padding:3px 12px;
+  text-decoration:none;
+  text-shadow:0px -1px 0px #5b6178;
+  height: 42px;
+}
+
+.addButton:hover {
+	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	background-color:#019ad2;
+}
+
+.addButton:active {
+	position:relative;
+	top:1px;
+}
+
 /* Todo list container */
+
+.listsContainer {
+  min-height: 100vh;
+  background-color: #112b2b;
+  margin: 0 auto;
+  max-width: 800px;
+  color: #ffff;
+}
   
 .todoListContainer {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,6 +130,9 @@
   
 .formDiv {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Shared css */
@@ -78,11 +140,13 @@
 .todosList,
 .completedTodosList {
   margin-top: 20px;
+  border-bottom: 1px solid #ffff;
 }
 
 .todoListContainer, 
-.completedTodosList {
-  border: 1px solid black;
+.completedTodosList,
+.todosList {
+  border: 1px solid #ffff;
   padding: 10px;
 }
 
@@ -90,8 +154,18 @@
   
 .completedTodosText {
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #ffff;
+  padding-bottom: 2px;
+  margin-bottom: 20px;
 }
   
 button {
   margin-left: 5px;
+}
+
+.completedTodosList {
+  width: 250px;
 }

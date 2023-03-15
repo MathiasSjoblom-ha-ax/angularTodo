@@ -19,7 +19,7 @@ export class TodoComponent implements OnInit{
   addTodo() {
     if(this.todoText.length != 0) {
       const newTodo = new Todo(this.todoText, false);
-      this.todos.push(newTodo);
+      this.todos.unshift(newTodo);
       localStorage.setItem('todos', JSON.stringify(this.todos));
     } else {
       alert("Please enter a valid todo!");
@@ -36,12 +36,13 @@ export class TodoComponent implements OnInit{
   //Moves it from the todos array to the completedTodos array and updates local storage
   doneTodo(index: number) {
     this.todos[index].isDone = true;
-    this.completedTodos.push(this.todos[index]);
+    this.completedTodos.unshift(this.todos[index]);
     this.todos.splice(index, 1);
     localStorage.setItem('completedtodos', JSON.stringify(this.completedTodos));
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
+  //Removes an item from the completedTodos array at the params index
   removeCompleted(index: number) {
     this.completedTodos.splice(index, 1);
     localStorage.setItem('completedtodos', JSON.stringify(this.completedTodos));
