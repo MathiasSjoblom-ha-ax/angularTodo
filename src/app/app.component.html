@@ -26,7 +26,7 @@
         <div class="formDiv">
           <form (ngSubmit)="addTodo()">
             <input class="todoInput" name="todoText" [(ngModel)]="todoText" placeholder="Enter Todo" maxlength="25">
-            <input type="submit" value="Add Todo" class="addButton">
+            <input type="submit" value="Add" class="addButton">
           </form>
         </div>
         <div class="listDiv">
@@ -35,8 +35,8 @@
             <ul>
               <li *ngFor="let todo of todos; let index = index" draggable="true" (dragstart)="onDragStart($event, index, 'todosList')" >
                 {{ todo.contentText }}
-                <i class="material-icons" (click)="doneTodo(index)">check_circle</i>
-                <i class="material-icons" (click)="removeTodo(index)">delete</i>
+                <i class="material-icons" (click)="doneTodo(index)" title="Mark as complete">check_circle</i>
+                <i class="material-icons" (click)="removeTodo(index)" title="Delete todo">delete</i>
               </li>
             </ul>
           </div>
@@ -45,9 +45,32 @@
             <ul>
               <li *ngFor="let todo of completedTodos; let index = index" draggable="true" (dragstart)="onDragStart($event, index, 'completedTodosList')">
                 {{ todo.contentText }}
-                <i class="material-icons" (click)="removeCompleted(index)">delete</i>
+                <i class="material-icons" (click)="removeCompleted(index)" title="Delete completed todo">delete</i>
               </li>
             </ul>
+          </div>
+        </div>
+        <div class="explanationText">
+          <a class="todoListTopText">Easy to use</a>
+          <div class="explanationSteps">
+            <div class="explanationEnter">
+              <h3 class="explanationTitle">Enter</h3>
+              <h4 class="explanationDescription">Just enter a todo into the top box to get started</h4>
+            </div>
+            <div class="arrowExpl">
+              <i class="material-icons">arrow_forward</i>
+            </div>
+            <div class="explanationDoIt">
+              <h3 class="explanationTitle">Your turn</h3>
+              <h4 class="explanationDescription">Now you just complete your todo</h4>
+            </div>
+            <div class="arrowExpl">
+              <i class="material-icons">arrow_forward</i>
+            </div>
+            <div class="explanationComplete">
+              <h3 class="explanationTitle">Complete</h3>
+              <h4 class="explanationDescription">Just mark your task that you have completed to see it in the completed todos list</h4>
+            </div>
           </div>
         </div>
     </div>

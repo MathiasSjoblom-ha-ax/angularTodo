@@ -28,8 +28,10 @@ export class TodoComponent implements OnInit{
 
   //Function that removes a todo item to the todos array and updates the local storage
   removeTodo(index: number) {
-    this.todos.splice(index, 1);
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+    if (confirm("Are you sure you want to delete this todo?")) {
+      this.todos.splice(index, 1);
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    }
   }
 
   //Marks the todo item at the specified index as completed
@@ -44,8 +46,10 @@ export class TodoComponent implements OnInit{
 
   //Removes an item from the completedTodos array at the params index
   removeCompleted(index: number) {
-    this.completedTodos.splice(index, 1);
-    localStorage.setItem('completedtodos', JSON.stringify(this.completedTodos));
+    if (confirm("Are you sure you want to delete this todo?")) {
+      this.completedTodos.splice(index, 1);
+      localStorage.setItem('completedtodos', JSON.stringify(this.completedTodos));
+    }
   }
 
   //OnInit function that is called at component initialization
@@ -55,7 +59,7 @@ export class TodoComponent implements OnInit{
     this.todos = JSON.parse(existingTodos as string) || [];
 
     const existingCompletedTodos = localStorage.getItem('completedtodos');
-    this.todos = JSON.parse(existingCompletedTodos as string) || [];
+    this.completedTodos = JSON.parse(existingCompletedTodos as string) || [];
   }
 
   //Function called when drag starts, sets the dragged data to the index of the item
@@ -70,7 +74,7 @@ export class TodoComponent implements OnInit{
     event.dataTransfer!.dropEffect = "move";
   }
 
-  //Function called when dragged item is dropped on target, changes item from list to the drop target list
+  //Function called when dragged item is dropped on target, changes item from list to the drop target list and updates local storage
   onDrop(event: DragEvent, listName: string): void {
     event.preventDefault();
     const index = parseInt(event.dataTransfer!.getData("text/plain"), 10);
@@ -78,13 +82,17 @@ export class TodoComponent implements OnInit{
     const item = sourceList === 'todosList' ? this.todos[index] : this.completedTodos[index];
     if (sourceList === 'todosList') {
       this.todos.splice(index, 1);
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     } else {
       this.completedTodos.splice(index, 1);
+      localStorage.setItem('completedtodos', JSON.stringify(this.completedTodos));
     }
     if (listName === 'todosList') {
       this.todos.unshift(item);
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     } else {
       this.completedTodos.unshift(item);
+      localStorage.setItem('completedtodos', JSON.stringify(this.completedTodos));
     }
   }
 }

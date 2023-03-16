@@ -68,10 +68,11 @@
   font-size: 30px;
   padding: 10px;
   color: #ffff;
-  border-bottom: 2px solid rgb(32, 168, 216) !important;
+  border-bottom: 2px solid #33bdef !important;
   display: inline-block;
   padding-bottom: 2px;
   margin-bottom: 20px;
+  font-family: Arial;
 }
 
 .todoInput {
@@ -81,8 +82,9 @@
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
-  margin-right: 16px;
+  margin-right: 10px;
   box-sizing: border-box;
+  width: 300px;
 }
 
 .addButton {
@@ -99,6 +101,7 @@
   text-decoration:none;
   text-shadow:0px -1px 0px #5b6178;
   height: 42px;
+  width: 80px;
 }
 
 .addButton:hover {
@@ -111,9 +114,21 @@
 	top:1px;
 }
 
+.formDiv {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Todo list container */
 
+/* Main list container */
 .listsContainer {
+  font-family: Arial;
+  border-left: 1px solid #ffff;
+  border-right: 1px solid #ffff;
+  border-bottom: 1px solid #ffff;
   min-height: 100vh;
   background-color: #112b2b;
   margin: 0 auto;
@@ -128,21 +143,35 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Completed todo list container */
   
-.formDiv {
-  margin-bottom: 20px;
+.completedTodosText {
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid #ffff;
+  padding-bottom: 2px;
+  margin-bottom: 20px;
+}
+
+.completedTodosList {
+  width: 300px;
+  margin-top: 30px;
 }
 
 /* Shared css */
-/*
-.todosList,
-.completedTodosList {
-  margin-top: 20px;
-  border-bottom: 1px solid #ffff;
-} */
+
+.todosList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todosList li .material-icons {
+  margin-left: 1rem;
+}
 
 button {
   margin-left: 5px;
@@ -176,7 +205,10 @@ button {
   margin-left: 10px;
 }
 
-.todoListContainer, 
+.todoListContainer {
+  border-top: 1px solid #ffff;
+}
+
 .completedTodosList,
 .todosList {
   border: 1px solid #ffff;
@@ -184,25 +216,38 @@ button {
 }
 
 .listDiv {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
   margin: 20px 0;
 }
 
-/* Completed todo list container */
-  
-.completedTodosText {
-  font-weight: bold;
-  display: flex;
+/* Explanation at the bottom of list */
+
+.todoListTopText {
   justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid #ffff;
-  padding-bottom: 2px;
-  margin-bottom: 20px;
 }
 
-.completedTodosList {
-  width: 250px;
+.explanationTitle {
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.explanationText {
+  font-family: Arial;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.explanationSteps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrowExpl {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+  color: #33bdef;
+  font-size: 2rem;
 }
